@@ -39,3 +39,9 @@ strict mode is used for the development purposes.
 In create-react-app based app we can name the components js But in vite we need to name the file with the .jsx extension 
 
 And always name components on both with the capital letter at beginning .  
+
+
+In JSX 
+always return the only one element from one component function
+
+So we can wrap multiple tag inside the single div . Or use the fragment <> //multiple elements </> 
