@@ -1,16 +1,41 @@
-# React + Vite
+Summary::
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React is a single page application building library.
+The index.html a single html page is loaded in browser. It is given the id mostly root and it is targeted to create a vitrual dom using the main.jsx script . 
+Main jsx :(create-react-app)
+```jsx
+import React from 'react';  
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-Currently, two official plugins are available:
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+Main jsx: (vite - react)
+```jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+```
+here the ReactDOM is used to create the Root element and then the div in the html file is rendered with the components Like App.jsx 
 
-## React Compiler
+create-react-app and vite follows the same structure with slight variant only like in naming convention.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+strict mode is used for the development purposes. 
 
-## Expanding the ESLint configuration
+// npm run start in create-react app
+// npm run dev in vite-react
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+In create-react-app based app we can name the components js But in vite we need to name the file with the .jsx extension 
+
+And always name components on both with the capital letter at beginning .  
