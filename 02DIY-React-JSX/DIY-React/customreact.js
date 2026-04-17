@@ -34,3 +34,6 @@ const reactElement = {
 const mainContainer = document.querySelector('#root');
 
 customRender(reactElement,mainContainer)
+
+
+// this is how react works the react parse the jsx and form a object tree of the each element and then inject it into the html 
