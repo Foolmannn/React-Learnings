@@ -20,12 +20,16 @@ function App() {
   }
   // So we use the react as it update the variable at multiple places . For this hooks are used we are using the useState hook 
   const addValue1 = ()=>{
-    console.log(value,Math.random())
+    console.log(count,Math.random())
 setCount(count+1)
   }
   const subValue1 = ()=>{
-    console.log(value,Math.random())
-setCount(count-1)  
+    console.log(count,Math.random())
+    // count=count-1; 
+    // setCount(count)  
+    //this will not work at the count is constant variable . We can do it by using the let 
+    // but the simplest way is directly giveing the new state to the  set function as below 
+    setCount(count-1)
 }
   return (
     <>
@@ -38,18 +42,18 @@ setCount(count-1)
     <h2>Counter Value: {value}</h2>
     <div className="buttons">
 
-    <button onClick={addValue}>Add value</button>
+    <button onClick={addValue}>Add value {value}</button>
     <br></br>
-    <button onClick={subValue}>Remove value</button>
+    <button onClick={subValue}>Remove value {value}</button>
     </div>
     </div>
     <div className='usingHook'>
     <h2>Counter Value: {count}</h2>
     <div className="buttons">
 
-    <button onClick={addValue1}>Add value</button>
+    <button onClick={addValue1}>Add value {count}</button>
     <br></br>
-    <button onClick={subValue1}>Remove value</button>
+    <button onClick={subValue1}>Remove value {count} </button>
     </div>
     </div>
     </div>
