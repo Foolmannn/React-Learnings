@@ -4,7 +4,7 @@ import Card from './components/Card'
 
 function App() {
   const [count, setCount] = useState(0)
-  let myObj = {
+  const myObj = {
     title:"Welcome to Nepal",
     place:"Chitwan"
   }
@@ -15,7 +15,7 @@ function App() {
 <h1 className='text-4xl font-bold'>Tailwind Test </h1>
 
 <Card name="suman" someObj={myObj} />
-<Card />
+{/* <Card /> */}
 </>
   )
 }
