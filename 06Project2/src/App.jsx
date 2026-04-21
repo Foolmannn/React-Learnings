@@ -39,22 +39,22 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl text-white flex flex-wrap justify-center font-bold ">
+<h1 className="text-xl sm:text-2xl md:text-3xl text-white text-center font-bold">
         Random Password Generator
       </h1>
-      <div className="main w-full max-w-1/2 mx-auto my-10 bg-gray-700 p-10 rounded-xl font-medium text-xl ">
-        <div className="flex rounded-xl bg-white justify-between p-0 m-0">
+<div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto my-10 bg-gray-700 p-5 sm:p-8 md:p-10 rounded-xl font-medium text-lg sm:text-xl">
+      <div className="flex flex-col sm:flex-row rounded-xl bg-white overflow-hidden">
           <input
             type="text"
             value={password}
             placeholder="password...."
             readOnly
-            className="py-3 px-3 w-full "
+            className="py-3 px-3 w-full outline-none"
             ref={passwordRef}
           />
           <button
             onClick={copyPasswordToClipboard}
-            className="outline-none bg-blue-700 text-white py-1 px-3 cursor-pointer rounded-e-xl "
+        className="bg-blue-700 text-white py-2 px-4 sm:rounded-none sm:rounded-r-xl"
           >
             Copy
           </button>
@@ -62,33 +62,32 @@ function App() {
             Generate
           </button> */}
         </div>
-        <div className="options px-5 py-2 flex items-center gap-x-5 text-xl font-medium bg-lime-200 rounded-md  my-3">
-          <div className="">
+        <div className="options px-3 py-3 flex flex-col sm:flex-row sm:flex-wrap gap-4 bg-lime-200 rounded-md my-3">
+          <div className="flex items-center gap-2">
             <label htmlFor="">Length:</label>
             <input
               type="range"
               min={6}
               max={100}
               value={length}
-              className="cursor-pointer"
+             className="cursor-pointer w-full sm:w-auto"
               onChange={(e) => {
                 setlength(Number(e.target.value));
               }}
             />
           </div>
-          <div className="">
+        <div className="flex items-center gap-2">
             <input
               type="checkbox"
               defaultChecked={wantNumber}
               id="numberInput"
-              className="cursor-pointer"
               onChange={() => {
                 setwantNumber((prev) => !prev);
               }}
             />
             <label htmlFor="numberInput">Numbers </label>
           </div>
-          <div className="">
+          <div className="flex items-center gap-2">
             <input
               type="checkbox"
               defaultChecked={wantSymbol}
