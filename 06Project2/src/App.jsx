@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect ,useRef } from "react";
 
 import "./index.css";
 
@@ -8,25 +8,33 @@ function App() {
   const [wantSymbol, setwantSymbol] = useState(false);
   const [password, setpassword] = useState("");
 
+  //useref hook 
+  const passwordRef = useRef(null)
+
   const passwordGenerator = useCallback(() => {
-      let pass = "";
-      let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      if (wantNumber) str += "0123456789";
-      if (wantSymbol) str += "!@#$%^&*()_{}[]~'-+=";
+    let pass = "";
+    let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    if (wantNumber) str += "0123456789";
+    if (wantSymbol) str += "!@#$%^&*()_{}[]~'-+=";
 
-      for (let i = 1; i <= length; i++) {
-        let char = Math.floor(Math.random() * str.length + 1);
-        pass += str.charAt(char);
-      }
-      setpassword(pass);
-    }, [wantNumber, wantSymbol, length, setpassword]);
-  // passwordGenerator() this will not react as it will create loop  so we need to create another button that calls this callback hook
-  console.log(length);
-  console.log(password);
-  console.log(wantSymbol);
+    for (let i = 1; i <= length; i++) {
+      let char = Math.floor(Math.random() * str.length + 1);
+      pass += str.charAt(char);
+    }
+    setpassword(pass);
+  }, [wantNumber, wantSymbol, length, setpassword]);
+  // passwordGenerator() this will not react as it will create loop  so we need to create another button that calls this callback hook or simply use the useeffect hook
 
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRange(0, 999);
+    window.navigator.clipboard.writeText(password);
+    alert("Copied Successfully! ")
+  }, [password]);
+
+  // when chages occur in the dependency array then this useeffect runs the function
   useEffect(() => {
-    passwordGenerator()
+    passwordGenerator();
   }, [length, wantNumber, wantSymbol, passwordGenerator]);
 
   return (
@@ -40,10 +48,14 @@ function App() {
             type="text"
             value={password}
             placeholder="password...."
-              readOnly
+            readOnly
             className="py-3 px-3 w-full "
+            ref={passwordRef}
           />
-          <button className="outline-none bg-blue-700 text-white py-1 px-3 cursor-pointer rounded-e-xl ">
+          <button
+            onClick={copyPasswordToClipboard}
+            className="outline-none bg-blue-700 text-white py-1 px-3 cursor-pointer rounded-e-xl "
+          >
             Copy
           </button>
           {/* <button onClick={passwordGenerator} className="outline-none bg-blue-700 text-white py-1 px-3 cursor-pointer rounded-e-xl ">
@@ -71,10 +83,10 @@ function App() {
               id="numberInput"
               className="cursor-pointer"
               onChange={() => {
-                setwantNumber((prev) => !prev)
+                setwantNumber((prev) => !prev);
               }}
             />
-              <label htmlFor="numberInput">Numbers </label>
+            <label htmlFor="numberInput">Numbers </label>
           </div>
           <div className="">
             <input
@@ -83,10 +95,10 @@ function App() {
               id="symbolInput"
               className="cursor-pointer"
               onChange={() => {
-                setwantSymbol((prev) => !prev)
+                setwantSymbol((prev) => !prev);
               }}
             />
-              <label htmlFor="symbolInput">Symbols </label>
+            <label htmlFor="symbolInput">Symbols </label>
           </div>
         </div>
       </div>
