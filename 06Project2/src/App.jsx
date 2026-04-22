@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect ,useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 import "./index.css";
 
@@ -8,8 +8,8 @@ function App() {
   const [wantSymbol, setwantSymbol] = useState(false);
   const [password, setpassword] = useState("");
 
-  //useref hook 
-  const passwordRef = useRef(null)
+  //useref hook
+  const passwordRef = useRef(null);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -29,7 +29,7 @@ function App() {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 999);
     window.navigator.clipboard.writeText(password);
-    alert("Copied Successfully! ")
+    // alert("Copied Successfully! ")
   }, [password]);
 
   // when chages occur in the dependency array then this useeffect runs the function
@@ -39,11 +39,11 @@ function App() {
 
   return (
     <>
-<h1 className="text-xl sm:text-2xl md:text-3xl text-white text-center font-bold">
+      <h1 className="text-xl sm:text-2xl md:text-3xl text-white text-center font-bold">
         Random Password Generator
       </h1>
-<div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto my-10 bg-gray-700 p-5 sm:p-8 md:p-10 rounded-xl font-medium text-lg sm:text-xl">
-      <div className="flex flex-col sm:flex-row rounded-xl bg-white overflow-hidden">
+      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto my-10 bg-gray-700 p-5 sm:p-8 md:p-10 rounded-xl font-medium text-lg sm:text-xl">
+        <div className="flex flex-col sm:flex-row rounded-xl bg-white overflow-hidden">
           <input
             type="text"
             value={password}
@@ -54,7 +54,7 @@ function App() {
           />
           <button
             onClick={copyPasswordToClipboard}
-        className="bg-blue-700 text-white py-2 px-4 sm:rounded-none sm:rounded-r-xl"
+            className="bg-blue-700 text-white py-2 px-4 sm:rounded-none sm:rounded-r-xl"
           >
             Copy
           </button>
@@ -70,13 +70,13 @@ function App() {
               min={6}
               max={100}
               value={length}
-             className="cursor-pointer w-full sm:w-auto"
+              className="cursor-pointer w-full sm:w-auto"
               onChange={(e) => {
                 setlength(Number(e.target.value));
               }}
             />
           </div>
-        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <input
               type="checkbox"
               defaultChecked={wantNumber}
