@@ -44,7 +44,7 @@ setconvertedAmount(amount*currencyInfo[to])
                                 label="From"
                                 amount={amount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency)=>setamount(amount)}
+                                onCurrencyChange={(currency)=>setfrom(currency)}
                                 selectCurrency={from}
                                 onAmountChange={(amount)=>setamount(amount)}
                             />
@@ -63,7 +63,7 @@ setconvertedAmount(amount*currencyInfo[to])
                                 label="To"
                                              amount={convertedAmount}
                                 currencyOptions={options}
-                                onCurrencyChange={(currency)=>setTo(currency)}
+                                onCurrencyChange={(currency)=>setto(currency)}
                                 selectCurrency={to}
                                 amountDisable
                                 
