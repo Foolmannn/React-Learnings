@@ -1,6 +1,6 @@
 React Router is the standard library for handling **navigation (routing)** in React apps. It lets you build **single-page applications (SPA)** where pages change without full reloads.
 
-
+https://reactrouter.com/start/declarative/installation
 ---
 
 # 🚦 What is React Router?
