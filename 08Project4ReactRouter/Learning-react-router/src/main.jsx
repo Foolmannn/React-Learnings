@@ -51,7 +51,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="about" element={<About />} />
+      <Route path="about" element={<About />} >
+      {/* <Route path="suman"/> this is how we nest another ruote inside the route */}
+      </Route>
       <Route path="contact" element={<Contact />} />
       <Route path="github" element={<Github />} loader={githubInfoLoader} />
     </Route>
