@@ -1,5 +1,5 @@
-Alright — I’m going to explain **React Context API** in a way that actually *clicks*, not just definitions.
-
+ **React Context API** 
+https://react.dev/reference/react/useContext
 ---
 
 # 🧠 First: What problem does Context API solve?
