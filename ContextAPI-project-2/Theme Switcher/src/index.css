@@ -1,3 +1,6 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *)); 
+/* without this we have to toggle the css manually . It is the modern way of the changine theme other wise the tailwind applies the default theme from the system  */
+
+/* For more: https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually */
 

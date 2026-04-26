@@ -26,7 +26,8 @@ useEffect(()=>{
 
   return (
     <>
-    <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
+    <ThemeProvider value={{themeMode, lightTheme, darkTheme}}> 
+      {/* needs the double curly braces other wise only first will be sent  */}
 
       <h1 className="font-bold bg-pink-400 text-center h-12 text-3xl">
         Theme Switcher{" "}
