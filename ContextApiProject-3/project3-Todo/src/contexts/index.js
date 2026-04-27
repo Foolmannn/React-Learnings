@@ -1,0 +1,1 @@
+export {TodoContext,TodoProvider , useTodo} from './TodoContext'  // this is just the aggregation . It is maily used for the big projects =so that single files export all the necessary 
