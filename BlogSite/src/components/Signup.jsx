@@ -5,7 +5,6 @@ import { login } from '../store/authSlice'
 import {Button , Logo, Input} from './index'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { createLogger } from 'vite'
 
 
 function SignUp() {

@@ -13,5 +13,5 @@ import PostForm from './post-form/PostForm'
 import AuthLayout from './AuthLayout'
 import Button from './Button'
 export {
-    Header,Footer,Container,Logo,LogoutBtn,Input,PostCard,Select,SignUp,PostForm,AuthLayout,Button,Login,
+    Header,Footer,Container,Logo,LogoutBtn,Input,PostCard,Select,SignUp,PostForm,AuthLayout,Button,Login,RTE
 }
