@@ -13,14 +13,25 @@ function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
-  const login = async (data) => {
+const login = async (data) => {
     setError("");
     try {
       const session = await authService.login(data);
       if (session) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(authLogin(userData));
-        navigate("/");
+
+        if (userData) {
+          // Cleanse the data of any Appwrite / json-bigint prototypes
+          const cleanUserData = JSON.parse(JSON.stringify(userData));
+
+          dispatch(authLogin({
+            id: cleanUserData.$id,
+            name: cleanUserData.name,
+            email: cleanUserData.email,
+          }));
+        }
+
+        navigate("/", { replace: true });
       }
     } catch (error) {
       setError(error.message);

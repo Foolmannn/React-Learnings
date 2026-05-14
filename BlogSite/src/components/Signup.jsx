@@ -13,19 +13,42 @@ function SignUp() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
 
-    const create = async(data) =>{
-        setError("")
-        try {
-            const userData = await authService.createAccount(data)
-            if(userData) {
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
-                navigate('/')
-            }
-        } catch (error) {
-            setError(error.message)
+const create = async (data) => {
+    setError("");
+    try {
+      // 1. Register the user profile database entry
+      const newUser = await authService.createAccount(data);
+      
+      if (newUser) {
+        // 2. CRITICAL: Log them in using the form details to start an active session
+        const session = await authService.login({
+          email: data.email,
+          password: data.password
+        });
+
+        if (session) {
+          // 3. Retrieve the fully validated user profile
+          const userData = await authService.getCurrentUser();
+          
+          if (userData) {
+            // 4. Cleanse the object of all hidden Appwrite / json-bigint prototypes
+            const cleanUserData = JSON.parse(JSON.stringify(userData));
+
+            dispatch(login({
+              id: cleanUserData.$id,
+              name: cleanUserData.name,
+              email: cleanUserData.email,
+            }));
+          }
+          
+          // 5. Safe to navigate home now that Redux and Appwrite are synchronized
+          navigate('/');
         }
+      }
+    } catch (error) {
+      setError(error.message);
     }
+  };
 
     return (
       <div className="flex items-center justify-center">
