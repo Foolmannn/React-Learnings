@@ -15,7 +15,7 @@ export class Service {
     this.bucket = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createPost({ title, slug, content, featuredimage, status, userid }) {
     try {
       return await this.databases.createDocument(
         conf.appwriteDatabaseId,
@@ -24,19 +24,19 @@ export class Service {
         {
           title,
           content,
-          featuredImage,
+          featuredimage,
           status,
-          userId,
+          userid,
         },
       );
     } catch (error) {
       console.log("Appwrite service:: createPost :: Error ", error);
     }
   }
-  async updatePost(slug, { title, content, featuredImage, status }) {
+  async updatePost(slug, { title, content, featuredimage, status }) {
     try {
       return (
-        await this.databases,
+        await this.databases.
         updateDocument(
           conf.appwriteDatabaseId,
           conf.appwriteCollectionId,
@@ -44,7 +44,7 @@ export class Service {
           {
             title,
             content,
-            featuredImage,
+            featuredimage,
             status,
           },
         )
@@ -75,7 +75,6 @@ export class Service {
         conf.appwriteCollectionId,
         slug,
       );
-      return true;
     } catch (error) {
       console.log("Appwrite service:: getPost :: Error ", error);
       return false;
@@ -129,6 +128,13 @@ export class Service {
         fileId
     )
   }
+  // 1. Try this first: getFileView (No transformations) as in free preview doesnot work . 
+getFileView(fileId) {
+    return this.bucket.getFileView(
+        conf.appwriteBucketId,
+        fileId
+    );
+}
 
 
 }

@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export default function AuthLayout({ children, authentication = true }) {
+
     const navigate = useNavigate()
     // 1. Extract both status and loading from Redux store
     const { status, loading } = useSelector((state) => state.auth)
-
+  console.log("AuthLayout Render ->", { authentication, status, loading });
     useEffect(() => {
         // 2. CRITICAL: Do absolutely nothing until App.jsx finishes the initial Appwrite check
         if (loading) return;

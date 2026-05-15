@@ -15,65 +15,77 @@ function PostForm({ post }) {
         status: post?.status || "active",
       },
     });
+
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user.userData);
+
+  // 🔴 FIX 1: Point this to your actual 'auth' state slice matching your store configuration
+  const userData = useSelector((state) => state.auth.userData);
+
   const submit = async (data) => {
     if (post) {
+      // 🔴 FIX 2: Added 'await' here because uploading a file to Appwrite is an asynchronous operation
       const file = data.image[0]
-        ? appwriteService.uploadFile(data.image[0])
+        ? await appwriteService.uploadFile(data.image[0])
         : null;
 
       if (file) {
-        appwriteService.deleteFile(post.featuredImage);
+        await appwriteService.deleteFile(post.featuredimage);
       }
 
       const dbPost = await appwriteService.updatePost(post.$id, {
         ...data,
-        featuredImage: file ? file.$id : undefined,
+        featuredimage: file ? file.$id : undefined,
       });
+
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
-    } else {
-      const file = data.image[0]
-        ? appwriteService.uploadFile(data.image[0])
-        : null;
-      if (file) {
-        const fileId = file.$id;
-        data.featuredImage = fileId;
-        await appwriteService.createPost({
-          ...data,
-          userId: userData.$id,
-        });
-        if (dbPost) {
-          navigate(`/post/${dbPost.$id}`);
-        }
-      }
+  } else {
+  const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
+
+  if (file) {
+    const fileId = file.$id;
+    // Manually ensure the key matches your DB (lowercase)
+    const dbPost = await appwriteService.createPost({
+      title: data.title,
+      slug: data.slug,
+      content: data.content,
+      status: data.status,
+      featuredimage: fileId, // Use the lowercase key here
+      userid: userData.$id || userData.id,
+    });
+
+    if (dbPost) {
+      navigate(`/post/${dbPost.$id}`);
     }
+  }
+}
   };
 
+  // 🔴 FIX 5: Simplified and corrected Regex logic to turn spaces and special characters into dashes cleanly
   const slugTransform = useCallback((value) => {
-    if (value && typeof value === "string")
+    if (value && typeof value === "string") {
       return value
         .trim()
         .toLowerCase()
-        .replace(/^[a-zA-Z\d\s]+/g, "-")
-        .replace(/\s/g, "-");
-
+        .replace(/[^a-zA-Z\d\s]+/g, "-") // Matches any character that isn't a letter, number, or space
+        .replace(/\s+/g, "-");           // Converts spaces into single dashes
+    }
     return "";
   }, []);
 
-  React.useEffect(() => {
-    const subsciption = watch((value, { name }) => {
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
       if (name === "title") {
-        setValue("slug", slugTransform(value.title, { shouldValidate: true }));
+        setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
     });
 
     return () => {
-      subsciption.unsubscribe();
+      subscription.unsubscribe();
     };
   }, [watch, slugTransform, setValue]);
+
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
@@ -112,7 +124,7 @@ function PostForm({ post }) {
         {post && (
           <div className="w-full mb-4">
             <img
-              src={appwriteService.getFilePreview(post.featuredImage)}
+              src={appwriteService.getFileView(post.featuredimage)}
               alt={post.title}
               className="rounded-lg"
             />
