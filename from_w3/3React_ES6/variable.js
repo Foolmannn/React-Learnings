@@ -19,7 +19,7 @@ If you use var inside of a block, i.e. a for loop, the variable is still availab
 VAR HAS A FUNCTION SCOPE, NOT A BLOCK SCOPE.
 */
 
-let x = 5.6;
+let x1 = 5.6;
 /*
 let is the block scoped version of var, and is limited to the block (or expression) where it is defined.
 
@@ -31,7 +31,7 @@ LET HAS A BLOCK SCOPE.
 
 // const
 
-const x = 5.6;
+const x2 = 5.6;
 
 
 // const is a variable that once it has been created, its value can never change.
@@ -54,3 +54,8 @@ But you CAN:
 Change the elements of constant array
 Change the properties of constant object
 */
+
+//  x2 = 2.4; //this will give error TypeError: Assignment to constant variable.
+
+const x3 = [1,2,3,4]
+ x3[0] = 5 // this is allowed so we can change the array or objects with constand references 
