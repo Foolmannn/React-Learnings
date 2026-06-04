@@ -8,8 +8,8 @@ const message = ()=>{
 
     const name = "Suman";
     const age = 20;
-    return name + 'is' + age 
-+  "years old"
+    return name + ' is ' + age 
++  " years old ."
 };
 
 export default message;
