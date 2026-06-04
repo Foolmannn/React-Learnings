@@ -8,8 +8,13 @@ const message = "Hello, " + name + "!\n" +
 "You are " + age + " years old.";
 
 console.log(message)
+
 // Example
 // With Template Strings:
+
+const message1 = `hello, " , ${name} !
+you are ${age} years old .` ;
+console.log(message1)
 
 
 // Template strings use backticks (`) instead of quotes and can include:
@@ -21,6 +26,13 @@ console.log(message)
 
 // Multi-line Strings:
 
+const html = `
+  <div>
+    <h1>Title</h1>
+    <p>Paragraph</p>
+  </div>
+`;
+
 
 // Note: The indentation in multi-line strings becomes part of the string.
 
@@ -28,14 +40,24 @@ console.log(message)
 // Example
 // The indentation becomes part of the string:
 
-
+const x = `
+  John:
+    Hello, how are you?
+  Jane:
+    I'm fine, thanks!
+`;
+console.log(x)
 
 // Expression Interpolation
 // You can include any valid JavaScript expression inside ${} in a template string:
 
 // Example
 // Insert variables inside template strings:
+let firstName = "Suman";
+let lastName = "Pun";
 
+let text = `Welcome ${firstName}, ${lastName}!`;
+console.log(text)
 // Example
 // Insert expressions inside template strings:
 
