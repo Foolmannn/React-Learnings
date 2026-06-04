@@ -30,7 +30,7 @@ const name1 = "hari"
 const age1 = 19
 
 
-export {name1,age1}
+export { name1, age1}
 
 
 // DEFAULT EXPORTS

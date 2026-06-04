@@ -13,7 +13,8 @@ console.log(name1,age1)
 
 // Import a default export from the file message.js:
 
-
-import message from "./message.js"
+import message from "./message.js" 
+import messageTest from "./message.js"  // default export can be imported with any name doesnot has to be same as you have exported 
 
 console.log(message())
+console.log(messageTest())
