@@ -120,5 +120,31 @@ console.log(text12)
 // Example
 // Tagged Template with multiple expressions:
 
+function highlight1(strings, fname1, fname2) {
+  let x = fname1.toUpperCase();
+  let y = fname2.toUpperCase();
+  return strings[0] + x + strings[1] + y + strings[2];
+}
+
+let name1 = "John";
+let name2 = "Jane";
+
+let text1 = highlight1`Hello ${name1} and ${name2}, how are you?`;
+console.log(text1)
+
+
 // Example
 // Tagged Template with multiple expressions that are held in an array using the rest parameter:
+
+function highlight3(strings, ...fname) {
+  let x = fname[0].toUpperCase();
+  let y = fname[1].toUpperCase();
+  return strings[0] + x + strings[1] + y + strings[2];
+}
+
+let name3 = "John";
+let name4 = "Jane";
+
+let text3 = highlight3`Hello ${name3} and ${name4}, how are you?`;
+
+console.log(text3)
