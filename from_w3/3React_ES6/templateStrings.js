@@ -4,10 +4,10 @@
 // Before:
 const name = "John";
 const age = 30;
-const message = "Hello, " + name + "!\n" + 
+const message0 = "Hello, " + name + "!\n" + 
 "You are " + age + " years old.";
 
-console.log(message)
+console.log(message0)
 
 // Example
 // With Template Strings:
@@ -58,16 +58,30 @@ let lastName = "Pun";
 
 let text = `Welcome ${firstName}, ${lastName}!`;
 console.log(text)
+
+
 // Example
 // Insert expressions inside template strings:
 
+let price = 100;
+let quantity = 10 ;
+
+console.log(`Total: ${price * quantity}`);
+
+
 // Example
 // Using the map function inside template strings:
+const items = ["apple", "banana", "orange"];
+const list = `You have ${items.length} items:
 
+${items.map(item => `-${item}`) . join('\n')} `;
+
+console.log(list)
 
 // Example
 // Using ternery operator inside template strings:
-
+const isAdmin = true;
+const message = `Status: ${isAdmin ? 'Admin' : 'User'}`;
 
 // Tagged Templates
 // You can also use template strings with a function (called a tag) to modify the output.
@@ -78,10 +92,17 @@ console.log(text)
 
 // Look at the example below:
 
-
-// Example
 // Tagged Template:
+function highlight(strings, fname) {
+  let x = fname.toUpperCase();
+  return strings[0] + x + strings[1];
+}
 
+let name12 = "John";
+
+let text12 = highlight`Hello ${name12}, how are you?`;
+
+console.log(text12)
 
 // Example Explained
 // The function name is highlight, you can name it whatever you want.
