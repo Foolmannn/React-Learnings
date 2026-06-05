@@ -78,19 +78,29 @@ const myElement = (
 
 // Alternatively, you can use a "fragment" to wrap multiple lines. This will prevent unnecessarily adding extra nodes to the DOM.
 
-// A fragment looks like an empty HTML tag: <></>.
+// A fragment looks like an empty HTML tag: <>  </>.
 
 // Example
 // Wrap two paragraphs inside a fragment:
+const myElement = (
+  <>
+    <p>I am a paragraph.</p>
+    <p>I am a paragraph too.</p>
+  </>
+);
+
 
 // Elements Must be Closed
 // JSX follows XML rules, and therefore HTML elements must be properly closed.
 
 // Example
 // Close empty elements with />
+const myElement = <input type="text" />;
 
 
 // JSX will throw an error if the HTML is not properly closed.
+
+
 
 // Attribute class = className
 // The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX.
@@ -101,13 +111,18 @@ const myElement = (
 
 // Example
 // Use attribute className instead of class in JSX:
+const myElement = <h1 className="myclass">Hello World</h1>;
+
+
 
 // Comments in JSX
 // Comments in JSX are written with {/* */}
 
+
 // Example
 // Comments in JSX:
 
+const myElement = <h1>Hello {/* Wonderful */} World </h1>;
 
 // JSX in React Components
 // React uses components to build UIs. Components are independent and reusable bits of code.
@@ -119,7 +134,34 @@ const myElement = (
 // Example
 // JSX in Components:
 
+function Car() {
+  return (
+    <>
+      <h2>My Car</h2>
+      <p>It is a Ford Mustang.</p>
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car />
+)
+
 // Inside the components, you can do some other operations before returning the HTML:
 
 // Example
 // JSX in Components:
+function Car() {
+  const brand = "Ford";
+  const model = "Mustang";
+  return (
+    <>
+      <h2>My Car</h2>
+      <p>It is a {brand} {model}.</p>
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Car />
+)
