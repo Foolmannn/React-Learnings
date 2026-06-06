@@ -104,3 +104,61 @@ createRoot(document.getElementById('root')).render(
 );
 
 // The example above might be a bit useless, but if we change the content of the Car component, by using arguments, it makes more sense:
+
+
+// Example
+// Use the Car component to display two different cars:
+
+function Car(props) {
+  return (
+    <h2>I am a {props.brand}!</h2>
+  );
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my Garage?</h1>
+      <Car brand="Ford" />
+      <Car brand="BMW" />
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Garage />
+);
+
+
+// Components in Files
+// React is all about re-using code, and it can be a good idea to split your components into separate files.
+
+// To do that, create a new file in the src folder with a .jsx file extension and put the code inside it:
+
+// Note that the filename must start with an uppercase character.
+
+// Example
+// This is the new file, we named it Vehicle.jsx:
+
+
+function Car() {
+  return (
+    <h2>Hi, I am a Car!</h2>
+  );
+}
+
+export default Car;
+
+// To be able to use the Car component, you have to import the Vehicle.jsx file in your application.
+
+// Now we import the Vehicle.jsx file in the application, and we can use the Car component as if it was created here.
+
+
+// main.jsx
+
+import { createRoot } from 'react-dom/client'
+import Car from './Vehicle.jsx';
+
+createRoot(document.getElementById('root')).render(
+  <Car />
+);
