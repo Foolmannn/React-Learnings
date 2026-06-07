@@ -159,19 +159,19 @@ class Car extends React.Component {
   }
 }
 
-// export default Car;
+export default Car;
 
 // To be able to use the Car component, you have to import the Vehicle.jsx file in your application.
 
 // Example
 // Now we import the Vehicle.jsx file in the application, and we can use the Car component as if it was created here.
 
-// import { createRoot } from 'react-dom/client'
-// import Car from './Vehicle.jsx';
+import { createRoot } from 'react-dom/client'
+import Car from './Vehicle.jsx';
 
-// createRoot(document.getElementById('root')).render(
-//   <Car />
-// );
+createRoot(document.getElementById('root')).render(
+  <Car />
+);
 
 // React Class Component State
 // React Class components have a built-in state object.
@@ -188,71 +188,71 @@ class Car extends React.Component {
 // Example
 // Specify the state object in the constructor method:
 
-// class Car extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   this.state = {brand: "Ford"};
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>My Car</h1>
-//       </div>
-//     );
-//   }
-// }
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+  this.state = {brand: "Ford"};
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Car</h1>
+      </div>
+    );
+  }
+}
 // The state object can contain as many properties as you like:
 
 // Example
 // Specify all the properties your component need:
 
-// class Car extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       brand: "Ford",
-//       model: "Mustang",
-//       color: "red",
-//       year: 1964
-//     };
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>My Car</h1>
-//       </div>
-//     );
-//   }
-// }
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Car</h1>
+      </div>
+    );
+  }
+}
 // Using the state Object
 // Refer to the state object anywhere in the component by using the this.state.propertyname syntax:
 
 // Example:
 // Refer to the state object in the render() method:
 
-// class Car extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       brand: "Ford",
-//       model: "Mustang",
-//       color: "red",
-//       year: 1964
-//     };
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>My {this.state.brand}</h1>
-//         <p>
-//           It is a {this.state.color}
-//           {this.state.model}
-//           from {this.state.year}.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+      </div>
+    );
+  }
+}
 
 // Changing the state Object
 // To change a value in the state object, use the this.setState() method.
@@ -262,36 +262,36 @@ class Car extends React.Component {
 // Example:
 // Add a button with an onClick event that will change the color property:
 
-// class Car extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       brand: "Ford",
-//       model: "Mustang",
-//       color: "red",
-//       year: 1964
-//     };
-//   }
-//   changeColor = () => {
-//     this.setState({color: "blue"});
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>My {this.state.brand}</h1>
-//         <p>
-//           It is a {this.state.color}
-//           {this.state.model}
-//           from {this.state.year}.
-//         </p>
-//         <button
-//           type="button"
-//           onClick={this.changeColor}
-//         >Change color</button>
-//       </div>
-//     );
-//   }
-// }
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+        <button
+          type="button"
+          onClick={this.changeColor}
+        >Change color</button>
+      </div>
+    );
+  }
+}
 
 // Always use the setState() method to change the state object, it will ensure that the component knows its been updated and calls the render() method (and all the other lifecycle methods).
 
@@ -305,10 +305,10 @@ class Car extends React.Component {
 
 // React has four built-in methods that gets called, in this order, when mounting a component:
 
-// constructor()
-// getDerivedStateFromProps()
-// render()
-// componentDidMount()
+constructor()
+getDerivedStateFromProps()
+render()
+componentDidMount()
 // The render() method is required and will always be called, the others are optional and will be called if you define them.
 
 // constructor
@@ -319,21 +319,21 @@ class Car extends React.Component {
 // Example:
 // The constructor method is called, by React, every time you make a component:
 
-// class Header extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {favoritecolor: "red"};
-//   }
-//   render() {
-//     return (
-//       <h1>My Favorite Color is {this.state.favoritecolor}</h1>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Header />
-// );
+createRoot(document.getElementById('root')).render(
+  <Header />
+);
 
 // getDerivedStateFromProps
 // The getDerivedStateFromProps() method is called right before rendering the element(s) in the DOM.
@@ -347,24 +347,24 @@ class Car extends React.Component {
 // Example:
 // The getDerivedStateFromProps method is called right before the render method:
 
-// class Header extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {favoritecolor: "red"};
-//   }
-//   static getDerivedStateFromProps(props, state) {
-//     return {favoritecolor: props.favcol };
-//   }
-//   render() {
-//     return (
-//       <h1>My Favorite Color is {this.state.favoritecolor}</h1>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  static getDerivedStateFromProps(props, state) {
+    return {favoritecolor: props.favcol };
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Header favcol="yellow"/>
-// );
+createRoot(document.getElementById('root')).render(
+  <Header favcol="yellow"/>
+);
 
 // render
 // The render() method is required, and is the method that actually outputs the HTML to the DOM.
@@ -372,17 +372,17 @@ class Car extends React.Component {
 // Example:
 // A simple component with a simple render() method:
 
-// class Header extends React.Component {
-//   render() {
-//     return (
-//       <h1>This is the content of the Header component</h1>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  render() {
+    return (
+      <h1>This is the content of the Header component</h1>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Header />
-// );
+createRoot(document.getElementById('root')).render(
+  <Header />
+);
 
 // componentDidMount
 // The componentDidMount() method is called after the component is rendered.
@@ -392,26 +392,26 @@ class Car extends React.Component {
 // Example:
 // At first my favorite color is red, but give me a second, and it is yellow instead:
 
-// class Header extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {favoritecolor: "red"};
-//   }
-//   componentDidMount() {
-//     setTimeout(() => {
-//       this.setState({favoritecolor: "yellow"})
-//     }, 1000)
-//   }
-//   render() {
-//     return (
-//       <h1>My Favorite Color is {this.state.favoritecolor}</h1>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Header />
-// );
+createRoot(document.getElementById('root')).render(
+  <Header />
+);
 
 // Updating
 // The next phase in the lifecycle is when a component is updated.
@@ -420,11 +420,11 @@ class Car extends React.Component {
 
 // React has five built-in methods that gets called, in this order, when a component is updated:
 
-// getDerivedStateFromProps()
-// shouldComponentUpdate()
-// render()
-// getSnapshotBeforeUpdate()
-// componentDidUpdate()
+getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
 // The render() method is required and will always be called, the others are optional and will be called if you define them.
 
 // getDerivedStateFromProps
@@ -575,48 +575,36 @@ class Car extends React.Component {
 // Example:
 // Use the getSnapshotBeforeUpdate() method to find out what the state object looked like before the update:
 
-// class Header extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {favoritecolor: "red"};
-//   }
-//   componentDidMount() {
-//     setTimeout(() => {
-//       this.setState({favoritecolor: "yellow"})
-//     }, 1000)
-//   }
-//   getSnapshotBeforeUpdate(prevProps, prevState) {
-//     document.getElementById("div1").innerHTML =
-//     "Before the update, the favorite was " + prevState.favoritecolor;
-//   }
-//   componentDidUpdate() {
-//     document.getElementById("div2").innerHTML =
-//     "The updated favorite is " + this.state.favoritecolor;
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>My Favorite Color is {this.state.favoritecolor}</h1>
-//         <div id="div1"></div>
-//         <div id="div2"></div>
-//       </div>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    document.getElementById("div1").innerHTML =
+    "Before the update, the favorite was " + prevState.favoritecolor;
+  }
+  componentDidUpdate() {
+    document.getElementById("div2").innerHTML =
+    "The updated favorite is " + this.state.favoritecolor;
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+        <div id="div1"></div>
+        <div id="div2"></div>
+      </div>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Header />
-// );
+createRoot(document.getElementById('root')).render(
+  <Header />
+);
 
-// XP
-// 7760
-// +10
-// •
-// 🔥 7 days
-// Get Certified Offer
-// COLOR PICKER
-// colorpicker
-     
-// REMOVE ADS
-
-// PLUSSPACESGET CERTIFIEDFOR TEACHERS
