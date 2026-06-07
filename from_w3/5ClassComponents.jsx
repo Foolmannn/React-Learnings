@@ -5,14 +5,12 @@
 
 // Even though Function components are preferred, there are no current plans on removing Class components from React.
 
-// This section will give you an overview of how to use Class components in React.
 
-// Feel free to skip this section, and use Function Components instead.
 
 // React Components
 // Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via a render function.
 
-// Components come in two types, Class components and Function components, in this chapter you will learn about Class components.
+// Components come in two types, Class components and Function components,
 
 // Create a Class Component
 // When creating a React component, the component's name must start with an upper case letter.
@@ -24,11 +22,11 @@
 // ExampleGet your own React.js Server
 // Create a Class component called Car
 
-// class Car extends React.Component {
-//   render() {
-//     return <h2>Hi, I am a Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
 
 // Now your React application has a component called Car, which returns a <h2> element.
 
@@ -37,11 +35,10 @@
 // Example
 // Display the Car component in the "root" element:
 
-// createRoot(document.getElementById('root')).render(
-//   <Car />
-// );
+createRoot(document.getElementById('root')).render(
+  <Car />
+);
 
-// REMOVE ADS
 
 // Component Constructor
 // If there is a constructor() function in your component, this function will be called when the component gets initiated.
@@ -57,28 +54,28 @@
 // Example
 // Create a constructor function in the Car component, and add a color property:
 
-// class Car extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {color: "red"};
-//   }
-//   render() {
-//     return <h2>I am a Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  constructor() {
+    super();
+    this.state = {color: "red"};
+  }
+  render() {
+    return <h2>I am a Car!</h2>;
+  }
+}
 
 // Use the color property in the render function:
 
 // Example
-// class Car extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {color: "red"};
-//   }
-//   render() {
-//     return <h2>I am a {this.state.color} Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  constructor() {
+    super();
+    this.state = {color: "red"};
+  }
+  render() {
+    return <h2>I am a {this.state.color} Car!</h2>;
+  }
+}
 
 // Props
 // Another way of handling component properties is by using props.
@@ -90,32 +87,32 @@
 // Example
 // Use an attribute to pass a color to the Car component, and use it in the render function:
 
-// class Car extends React.Component {
-//   render() {
-//     return <h2>I am a {this.props.color} Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  render() {
+    return <h2>I am a {this.props.color} Car!</h2>;
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Car color="red"/>
-// );
+createRoot(document.getElementById('root')).render(
+  <Car color="red"/>
+);
 
 // Props in the Constructor
 // If your component has a constructor function, the props should always be passed to the constructor and also to the React.Component via the super() method.
 
 // Example
-// class Car extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return <h2>I am a {this.props.model}!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h2>I am a {this.props.model}!</h2>;
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Car model="Mustang"/>
-// );
+createRoot(document.getElementById('root')).render(
+  <Car model="Mustang"/>
+);
 
 // Components in Components
 // We can refer to components inside other components:
@@ -123,26 +120,26 @@
 // Example
 // Use the Car component inside the Garage component:
 
-// class Car extends React.Component {
-//   render() {
-//     return <h2>I am a Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  render() {
+    return <h2>I am a Car!</h2>;
+  }
+}
 
-// class Garage extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//       <h1>Who lives in my Garage?</h1>
-//       <Car />
-//       </div>
-//     );
-//   }
-// }
+class Garage extends React.Component {
+  render() {
+    return (
+      <div>
+      <h1>Who lives in my Garage?</h1>
+      <Car />
+      </div>
+    );
+  }
+}
 
-// createRoot(document.getElementById('root')).render(
-//   <Garage />
-// );
+createRoot(document.getElementById('root')).render(
+  <Garage />
+);
 
 // Components in Files
 // React is all about re-using code, and it can be smart to insert some of your components in separate files.
@@ -154,13 +151,13 @@
 // Example
 // This is the new file, we named it Vehicle.jsx:
 
-// import React from 'react';
+import React from 'react';
 
-// class Car extends React.Component {
-//   render() {
-//     return <h2>Hi, I am a Car!</h2>;
-//   }
-// }
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
 
 // export default Car;
 
