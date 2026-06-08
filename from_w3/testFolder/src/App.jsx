@@ -1,12 +1,4 @@
-// React Props Children
-// Props Children
-// In React, you can send the content between the opening and closing tags of a component, to another component.
 
-// This can be accessed in the other component using the props.children property.
-
-
-// Example
-// From the Parent component, send the content between the opening and closing tags of the Son and Daughter components:
 
 function Son(props) {
   return (
@@ -47,6 +39,4 @@ function Parent() {
   );
 }
 
-createRoot(document.getElementById('root')).render(
-  <Parent />
-);
+export default Parent
