@@ -56,15 +56,99 @@ function Car(props) {
 // // Different Data Types
 // // React props can be of any data type, including variables, numbers, strings, objects, arrays, and more.
 
-// // Strings can be sent inside quotes as in the examples above, but numbers, variables, and objects need to be sent inside curly brackets.
+// // STRINGS CAN BE SENT INSIDE QUOTES AS IN THE EXAMPLES ABOVE, BUT NUMBERS, VARIABLES, AND OBJECTS NEED TO BE SENT INSIDE CURLY BRACKETS.
+
+// Numbers 
+// Numbers has to be sent inside curly brackets to be treated as numbers:
+
+createRoot(document.getElementById('root')).render(
+  <Car year={1969} />
+);
+
+// Variables 
+// Variables has to be sent inside curly brackets:
+
+
+let x = "Tesla"
+createRoot(document.getElementById('root')).render(
+  <Car year={x} />
+);
+
+// Objects and Arrays 
+// Objects and Arrays has to be sent inside curly brackets:
+
+let x = [1964, 1965, 1966];
+let y = {name: "Ford", model: "Mustang"};
+
+createRoot(document.getElementById('root')).render(
+  <Car years={x} carinfo={y} />
+);
+
 
 // // Object Props
 // // The component treats objects like objects, and you can use the dot notation to access the properties.
 
+// Example 
+
+function Car(props) {
+  return (
+    <>
+      <h2>My {props.carinfo.name} {props.carinfo.model}!</h2>
+      <p>It is {props.carinfo.color} and it is from {props.carinfo.year}!</p>
+    </>
+  );
+}
+
+const carInfo = {
+  name: "Ford",
+  model: "Mustang",
+  color: "red",
+  year: 1969
+};
+
+createRoot(document.getElementById('root')).render(
+  <Car carinfo={carInfo} />
+);
+
 // // Array Props
 // // Array props can be accessed using the indexes.
+
+// Example 
+function Car(props) {
+  return (
+    <h2>My car is a {props.carinfo[0]} {props.carinfo[1]}!</h2>
+  );
+}
+
+const carInfo = ["Ford", "Mustang"];
+
+createRoot(document.getElementById('root')).render(
+  <Car carinfo={carInfo} />
+);
 
 // // Pass Props from Component to Component
 // // Attributes are also how you pass data from one component to another, as parameters.
 
-// // Note: React Props are read-only! You will get an error if you try to change their value.
+// example 
+//  Sending the brand attribute from the Garage component to the Car component 
+
+function Car(props) {
+  return (
+    <h2>I am a {props.brand}!</h2>
+  );
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand="Ford" />
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Garage />
+);
+
+// // NOTE: REACT PROPS ARE READ-ONLY! YOU WILL GET AN ERROR IF YOU TRY TO CHANGE THEIR VALUE.
