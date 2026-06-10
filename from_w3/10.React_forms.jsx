@@ -151,3 +151,5 @@ function MyForm() {
 createRoot(document.getElementById('root')).render(
   <MyForm />
 );
+
+// By making these changes to the <textarea> element, React is able to handle it as any other input element.
