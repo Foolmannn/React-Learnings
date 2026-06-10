@@ -108,3 +108,46 @@ createRoot(document.getElementById('root')).render(
 
 
   const [name, setName] = useState("John");
+
+
+
+//   REACT SUBMIT FORMS
+
+// Submitting Forms
+// You can control the submit action by adding an event handler in the onSubmit attribute for the <form>:
+
+// Example:Get your own React.js Server
+// Add a submit button and an event handler in the onSubmit attribute:
+
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
+
+function MyForm() {
+  const [name, setName] = useState("");
+
+  function handleChange(e) {
+    setName(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert(name);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Enter your name:
+        <input
+          type="text" 
+          value={name}
+          onChange={handleChange}
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  )
+}
+
+createRoot(document.getElementById('root')).render(
+  <MyForm />
+);
