@@ -9,7 +9,7 @@ function MyForm() {
     const value = e.target.value;
     setInputs(values => ({...values, [name]: value}))
   }
-
+  console.log(useState())
   return (
     <form>
       <label>First name:
