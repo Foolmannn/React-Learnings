@@ -26,8 +26,9 @@ function myForm(){
     const handleChange=(e)=>{
         const name = e.target.name;
         const value = e.target.value;
-        setInputs(values=>({...values,[name]:value}))
+        setInputs(values=>({...values,[name]:value})) // without this square bracket the state doesnot updates and we will not see any changes 
     }
+// Use square brackets inside an object when the property name comes from a variable or expression.
 
     return(
         <form >
@@ -91,3 +92,228 @@ function myForm(){
     firstname: 'John',
     lastname: 'Doe'
   });
+
+  /*
+
+
+
+  The `[]` in:
+```jsx
+setInputs(values => ({
+  ...values,
+  [name]: value
+}))
+```
+
+is called **computed property syntax** in JavaScript.
+
+## Why do we need `[name]`?
+
+Suppose your input field is:
+
+```jsx
+<input
+  type="text"
+  name="username"
+  onChange={handleChange}
+/>
+```
+
+When the user types, this line runs:
+
+```jsx
+const name = e.target.name; // "username"
+const value = e.target.value;
+```
+
+Now:
+
+```jsx
+[name]: value
+```
+
+becomes:
+
+```jsx
+username: value
+```
+
+So the state updates to:
+
+```jsx
+{
+  username: "Suman"
+}
+```
+
+---
+
+## What happens if you don't use `[]`?
+
+If you write:
+
+```jsx
+{
+  name: value
+}
+```
+
+JavaScript treats `name` as a literal key called `"name"`.
+
+Example:
+
+```jsx
+const name = "username";
+const value = "Suman";
+
+const obj = {
+  name: value
+};
+
+console.log(obj);
+```
+
+Output:
+
+```js
+{
+  name: "Suman"
+}
+```
+
+Notice the key is `"name"`, not `"username"`.
+
+---
+
+## With `[]`
+
+```jsx
+const name = "username";
+const value = "Suman";
+
+const obj = {
+  [name]: value
+};
+
+console.log(obj);
+```
+
+Output:
+
+```js
+{
+  username: "Suman"
+}
+```
+
+The variable's value is used as the property name.
+
+---
+
+## Why is it useful in forms?
+
+Imagine a form with many fields:
+
+```jsx
+<input name="firstName" />
+<input name="lastName" />
+<input name="email" />
+```
+
+Using one handler:
+
+```jsx
+const handleChange = (e) => {
+  const name = e.target.name;
+  const value = e.target.value;
+
+  setInputs(prev => ({
+    ...prev,
+    [name]: value
+  }));
+};
+```
+
+Typing in:
+
+```jsx
+<input name="firstName" />
+```
+
+updates:
+
+```js
+{
+  firstName: "Suman"
+}
+```
+
+Typing in:
+
+```jsx
+<input name="email" />
+```
+
+updates:
+
+```js
+{
+  firstName: "Suman",
+  email: "suman@example.com"
+}
+```
+
+Without `[]`, every update would go into a property literally called `"name"`:
+
+```js
+{
+  name: "suman@example.com"
+}
+```
+
+which is not what you want.
+
+---
+
+## General rule
+
+Use square brackets inside an object when the property name comes from a variable or expression.
+
+```js
+const key = "age";
+
+const person = {
+  [key]: 25
+};
+```
+
+Equivalent to:
+
+```js
+const person = {
+  age: 25
+};
+```
+
+Another example:
+
+```js
+const field = "password";
+
+setInputs(prev => ({
+  ...prev,
+  [field]: "123456"
+}));
+```
+
+Result:
+
+```js
+{
+  password: "123456"
+}
+```
+
+So in your React form, `[name]` is necessary because the field name (`username`, `email`, `password`, etc.) is stored in a variable, and you want that variable's value to become the object key.
+
+*/
