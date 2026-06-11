@@ -1,42 +1,35 @@
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
+function MyForm() {
+  const [inputs, setInputs] = useState({});
 
-function Son(props) {
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
   return (
-    <div style={{background: 'lightgreen'}}>
-      <h2>Son</h2>
-      <div>{props.children}</div>
-    </div>
-  );
+    <form>
+      <label>First name:
+      <input 
+        type="text" 
+        name="firstname" 
+        value={inputs.firstname} 
+        onChange={handleChange}
+      />
+      </label>
+      <label>Last name:
+        <input 
+          type="text" 
+          name="lastname" 
+          value={inputs.lastname} 
+          onChange={handleChange}
+        />
+        </label>
+        <p>Current values: {inputs.firstname} {inputs.lastname}</p>
+    </form>
+  )
 }
-
-function Daughter(props) {
-  const {brand, model} = props;
-  return (
-    <div style={{background: 'lightblue'}}>
-      <h2>Daughter</h2>
-      <div>{props.children}</div>
-    </div>
-  );
-}
-
-function Parent() {
-  return (
-    <div>
-      <h1>My two Children</h1>
-      <Son>
-        <p>
-          This was written in the Parent component,
-          but displayed as a part of the Son component
-        </p>
-      </Son>
-      <Daughter>
-        <p>
-          This was written in the Parent component,
-          but displayed as a part of the Daughter component
-        </p>
-      </Daughter>
-    </div>
-  );
-}
-
-export default Parent
+export default MyForm
