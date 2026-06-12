@@ -40,23 +40,87 @@ createRoot(document.getElementById('root')).render(
 // We should always include the second parameter which accepts an array. We can optionally pass dependencies to useEffect in this array.
 
 // Example
-// 1. No dependency passed:
+// 1. NO DEPENDENCY PASSED:
+
+useEffect(() => {
+  //Runs on every render
+});
+
+
+
+
 // Example
-// 2. An empty array:
+// 2. AN EMPTY ARRAY:
+
+useEffect(() => {
+  //Runs only on the first render
+}, []);
+
+
+
 // Example
-// 3. Props or state values:
+// 3. PROPS OR STATE VALUES:
+
+useEffect(() => {
+  //Runs on the first render
+  //And any time any dependency value changes
+}, [prop, state]);
 
 // So, to fix this issue, let's only run this effect on the initial render.
 
 // Example:
 // Only run the effect on the initial render:
+import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, []); // <- add empty brackets here
+
+  return <h1>I've rendered {count} times!</h1>;
+}
+
+createRoot(document.getElementById('root')).render(
+  <Timer />
+);
+
 
 // Example:
 // Here is an example of a useEffect Hook that is dependent on a variable. If the count variable updates, the effect will run again:
 
+
+import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
+
+  useEffect(() => {
+    setCalculation(() => count * 2);
+  }, [count]); // <- add the count variable here
+
+  return (
+    <>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount((c) => c + 1)}>+</button>
+      <p>Calculation: {calculation}</p>
+    </>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <Counter />
+);
+
 // If there are multiple dependencies, they should be included in the useEffect dependency array.
 
-// Effect Cleanup
+// EFFECT CLEANUP
 // Some effects require cleanup to reduce memory leaks.
 
 // Timeouts, subscriptions, event listeners, and other effects that are no longer needed should be disposed.
@@ -65,5 +129,26 @@ createRoot(document.getElementById('root')).render(
 
 // Example:
 // Clean up the timer at the end of the useEffect Hook:
+
+import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+
+    return () => clearTimeout(timer)
+  }, []);
+
+  return <h1>I've rendered {count} times!</h1>;
+}
+
+createRoot(document.getElementById('root')).render(
+  <Timer />
+);
 
 // Note: To clear the timer, we had to name it.
