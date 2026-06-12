@@ -61,7 +61,7 @@ function MyForm() {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">Submit
+      <button type="submit">Submit</button>
     </form>
   )
 }
