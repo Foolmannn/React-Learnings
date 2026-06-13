@@ -80,8 +80,11 @@ function Timer() {
     setTimeout(() => {
       setCount((count) => count + 1);
     }, 1000);
-  }, []); // <- add empty brackets here
 
+
+    
+  }, []); // <- add empty brackets here
+  
   return <h1>I've rendered {count} times!</h1>;
 }
 

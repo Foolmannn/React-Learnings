@@ -104,25 +104,32 @@ createRoot(document.getElementById('root')).render(
 
 
 // Example Explained
-// First, we import the necessary functions:
 
+// First, we import the necessary functions:
 // createPortal from react-dom - for creating the portal
 // useState from react - for managing the modal's open/close state
+
+
 // The Modal component uses createPortal to render its content directly into the document.body element.
 
 
 // Why Use Portals
+
 // Portals are particularly useful for:
 
 // Modals and dialogs
 // Tooltips
 // Floating menus
 // Notifications
+
+
 // Any UI element that needs to "break out" of its container's layout, especially when the parent component has:
 
 // overflow: hidden
 // z-index conflicts
 // Complex positioning requirements
+
+
 // Event Bubbling in Portals
 // Even though a portal renders content in a different part of the DOM tree, events from the portal content still bubble up through the React component tree as if the portal wasn't there.
 
@@ -130,6 +137,7 @@ createRoot(document.getElementById('root')).render(
 
 // Example
 // Click the button to demonstrate that both the button and the parent div element will have its onClick event triggered:
+
 import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
