@@ -36,7 +36,7 @@ let {f,l,a } = person;
 
 // We can extract only the value(s) you want:
 
-const fruit = {cd 
+const fruit = {
     name: "Apple",
     status: "ripe"
 }

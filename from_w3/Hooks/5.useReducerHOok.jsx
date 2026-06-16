@@ -10,6 +10,7 @@
 // The useReducer Hook accepts three arguments.
 
         useReducer(reducer, initialState, init)
+        const [state, dispatch] = useReducer(reducer, initialState);
 
 // The reducer function contains your custom state logic and the initialStatecan be a simple value, but generally will contain an object. The init argument is optional and is used to initialize the state.
 
