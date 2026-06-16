@@ -6,7 +6,7 @@ import Test from './Test.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <MyForm />
+    {/* <MyForm /> */}
     <Test />
   </StrictMode>,
 )
