@@ -11,9 +11,9 @@
 
 // The useCallback and useMemo Hooks are similar:
 
-// useMemo returns a memoized value.
+    // USEMEMO RETURNS A MEMOIZED VALUE.
 
-// useCallback returns a memoized function.
+    // USECALLBACK RETURNS A MEMOIZED FUNCTION.
 
 
 // SYNTAX
