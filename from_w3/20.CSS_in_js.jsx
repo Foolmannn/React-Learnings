@@ -8,6 +8,8 @@
 // Create component-scoped styles
 // Use dynamic styles based on props
 // Avoid CSS class name conflicts
+
+
 // In this tutorial, we'll use the popular styled-components library.
 
 // Getting Started
@@ -18,7 +20,7 @@
 // npm install styled-components
 // Now you can start writing CSS directly in your .jsx files:
 
-// ExampleGet your own React.js Server
+// Example
 // Insert styles directly in the .jsx files:
 
 // Without CSS-in-JS, you would have to either:
