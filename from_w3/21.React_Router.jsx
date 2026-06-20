@@ -196,9 +196,10 @@ function App() {
 
 // The NavLink is especially useful for:
 
-// Navigation menus
-// Breadcrumbs
-// Tabs
+    // Navigation menus
+    // Breadcrumbs
+    // Tabs
+
 // A NavLink is considered active if the current URL matches its to prop.
 
 // The NavLink component makes it easier to style active links.
@@ -207,7 +208,45 @@ function App() {
 
 // Example
 // Create a new element called navLinkStyles and replace <Link> with <NavLink> in App.
+// Style function for active links
+const navLinkStyles = ({ isActive }) => ({
+  color: isActive ? '#007bff' : '#333',
+  textDecoration: isActive ? 'none' : 'underline',
+  fontWeight: isActive ? 'bold' : 'normal',
+  padding: '5px 10px'
+});
 
+function Home() {
+  return <h1>Home Page</h1>;
+}
+
+function About() {
+  return <h1>About Page</h1>;
+}
+
+function Contact() {
+  return <h1>Contact Page</h1>;
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      {/* Navigation with NavLink for active styling */}
+      <nav style={{ marginBottom: '20px' }}>
+        <NavLink to="/" style={navLinkStyles}>Home</NavLink> |{" "}
+        <NavLink to="/about" style={navLinkStyles}>About</NavLink> |{" "}
+        <NavLink to="/contact" style={navLinkStyles}>Contact</NavLink>
+      </nav>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 // Note that we also need to import the NavLink component from 'react-router-dom'.
 
 // URL Parameters
@@ -222,6 +261,28 @@ function App() {
 // Here's a simple example with a greeting page that can say hello to different customers:
 
 // Example
+import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
+
+function Info() {
+  const { firstname } = useParams();
+  return <h1>Hello, {firstname}!</h1>;
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/customer/Emil">Emil</Link> | 
+        <Link to="/customer/Tobias">Tobias</Link> |
+        <Link to="/customer/Linus">Linus</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/customer/:firstname" element={<Info />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 // In this example:
 
