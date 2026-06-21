@@ -17,6 +17,32 @@
 // Example:
 // Use the JSONPlaceholder service to fetch some fake titles and display them:
 
+import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+
+const Home = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+ }, []);
+
+  return (
+    <>
+      {data &&
+        data.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
+    </>
+  );
+};
+
+createRoot(document.getElementById('root')).render(
+  <Home />
+);
+
 // The logic behind the fetch may be needed in other components as well, so we will turn that into a custom Hook.
 
 // Move the fetch logic to a new file to be used as a custom Hook.
@@ -29,6 +55,21 @@
 // Move the fetch component into the new file:
 
 // useFetch.js
+import { useState, useEffect } from "react";
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [url]);
+
+  return [data];
+};
+
+export default useFetch;
 
 // Now we can import this Hook, and use it in any other component:
 
@@ -36,6 +77,26 @@
 // Import and use the newly created custom Hook:
 
 // main.jsx
+
+import { createRoot } from 'react-dom/client';
+import useFetch from "./useFetch";
+
+const Home = () => {
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+
+  return (
+    <>
+      {data &&
+        data.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
+    </>
+  );
+};
+
+createRoot(document.getElementById('root')).render(
+  <Home />
+);
 
 // Example Explained
 // We have created a new file called useFetch.js containing a function called useFetch which contains all of the logic needed to fetch our data.
